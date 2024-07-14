@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation Models, LLMs, and Diffusion Models | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .module-content li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--light-text-color);
+        }
+        .module-content li::before {
+            content: '▹';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        .module-content p {
+            color: var(--light-text-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Foundation Models, LLMs, and Diffusion Models</h1>
+        <p>Understanding Advanced AI Technologies</p>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Foundation Models: The Powerful Base</div>
+            <div class="module-content">
+                <p>Foundation models are a type of artificial intelligence (AI) that act like powerful learning platforms. Imagine them as giant brains trained on massive amounts of unlabeled data, allowing them to tackle a wide range of tasks. Here's the key:</p>
+                <ul>
+                    <li><strong>Broad Data:</strong> Unlike traditional AI trained for specific jobs, foundation models devour vast amounts of unlabeled data, like text and images, to learn general patterns.</li>
+                    <li><strong>Adaptable Skills:</strong> This broad training allows them to be "fine-tuned" for various tasks, making them foundational for many AI applications.</li>
+                    <li><strong>Examples:</strong> Think of tools like ChatGPT, a large language model (LLM) powered by a foundation model, for generating creative text formats.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">LLMs: Masters of Language</div>
+            <div class="module-content">
+                <p>Large language models (LLMs) are a kind of foundation model specializing in understanding and processing human language. They excel at tasks like:</p>
+                <ul>
+                    <li><strong>Text Generation:</strong> LLMs can create different creative text formats, from poems to code, based on what they've learned.</li>
+                    <li><strong>Language Translation:</strong> They can translate languages by understanding the nuances and context of human speech.</li>
+                    <li><strong>Question Answering:</strong> LLMs can answer your questions in an informative way, even if they are open ended or challenging.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Diffusion Models: Pixel Powerhouses</div>
+            <div class="module-content">
+                <p>Diffusion models are another type of foundation model, but instead of text, they focus on images and other forms of digital content. Their specialty is:</p>
+                <ul>
+                    <li><strong>Content Creation:</strong> They can generate new images, videos, or audio by learning the statistical patterns in existing data.</li>
+                    <li><strong>Image Editing:</strong> They can be used to manipulate existing images, like adding or removing elements or changing styles.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Key Differences: Words vs. Pixels</div>
+            <div class="module-content">
+                <p>While both foundation models, LLMs and diffusion models have different areas of expertise:</p>
+                <ul>
+                    <li><strong>Data Focus:</strong> LLMs focus on textual data, while diffusion models handle visual and audio data.</li>
+                    <li><strong>Output:</strong> LLMs generate text formats, while diffusion models create or edit multimedia content.</li>
+                </ul>
+                <p>Think of LLMs as language experts and diffusion models as the creative artists of the AI world. They both leverage the power of foundation models but specialize in different aspects of information processing.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

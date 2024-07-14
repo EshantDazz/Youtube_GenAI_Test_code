@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridging the Gap: Accessing Diverse LLMs with Langchain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+            --code-background: #1e1e1e;
+            --code-text-color: #d4d4d4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--light-text-color);
+        }
+        .module-content h2 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .module-content h3 {
+            color: var(--light-text-color);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        pre {
+            background-color: var(--code-background);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--code-text-color);
+            font-size: 0.9rem;
+        }
+        .code-block {
+            position: relative;
+            margin: 2rem 0;
+        }
+        .code-block::before {
+            content: 'Python';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .function { color: #dcdcaa; }
+        .class { color: #4ec9b0; }
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bridging the Gap: Accessing Diverse LLMs with Langchain</h1>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Introduction</div>
+            <div class="module-content">
+                <p>Langchain emerges as a powerful bridge, simplifying communication with various large language models (LLMs) under one roof. This section explores code snippets that demonstrate interacting with different LLMs through Langchain's pre-built interfaces.</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">1. Chatting with OpenAI's GPT-3 (Claude)</div>
+            <div class="module-content">
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_openai <span class="keyword">import</span> <span class="class">ChatOpenAI</span>
+
+model = <span class="class">ChatOpenAI</span>()</code></pre>
+                </div>
+                <p>This code interacts with OpenAI's GPT-3 model, specifically the "Claude" variant, through Langchain's <code>ChatOpenAI</code> class. This class provides a convenient interface to send prompts and receive responses from the model.</p>
+
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">2. Engaging with Anthropic's Claude</div>
+            <div class="module-content">
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_anthropic <span class="keyword">import</span> <span class="class">ChatAnthropic</span>
+
+model = <span class="class">ChatAnthropic</span>(model=<span class="string">'claude-3-opus-20240229'</span>)</code></pre>
+                </div>
+                <p>This code leverages Langchain's <code>ChatAnthropic</code> class to interact with Anthropic's Claude model. Here, we specify the exact model version (<code>claude-3-opus-20240229</code>) to ensure we're using the desired variant.</p>
+
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">3. Unleashing the Power of Ollama (Community LLMs)</div>
+            <div class="module-content">
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_community.llms <span class="keyword">import</span> <span class="class">Ollama</span>
+
+llm = <span class="class">Ollama</span>(
+    model=<span class="string">"llama3"</span>
+)  <span class="comment"># assuming you have Ollama installed and have llama3 model pulled with `ollama pull llama3 `</span></code></pre>
+                </div>
+                <p>This code snippet showcases interacting with open-source LLMs via Langchain's <code>Ollama</code> class. Here, we connect to the "llama3" model, assuming you have Ollama installed and the model downloaded.</p>
+
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">4. Interacting with Groq (Llama-based Models)</div>
+            <div class="module-content">
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_groq <span class="keyword">import</span> <span class="class">ChatGroq</span>
+
+chat = <span class="class">ChatGroq</span>(
+    temperature=<span class="number">0</span>,
+    model=<span class="string">"llama3-70b-8192"</span>,
+    <span class="comment"># api_key="" # Optional if not set as an environment variable</span>
+)</code></pre>
+                </div>
+                <p>This code interacts with Groq, a service that provides access to various LLM models, potentially including "llama3-70b-8192" in this case. Langchain's <code>ChatGroq</code> class facilitates this interaction.</p>
+
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">5. Tapping into NVIDIA's AI Endpoints</div>
+            <div class="module-content">
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_nvidia_ai_endpoints <span class="keyword">import</span> <span class="class">ChatNVIDIA</span>
+
+llm = <span class="class">ChatNVIDIA</span>(model=<span class="string">"mistralai/mixtral-8x22b-instruct-v0.1"</span>)</code></pre>
+                </div>
+                <p>This code interacts with NVIDIA's AI Endpoints service, specifically the "mistralai/mixtral-8x22b-instruct-v0.1" model, using Langchain's <code>ChatNVIDIA</code> class.</p>
+
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Advantages of Langchain for LLM Communication</div>
+            <div class="module-content">
+                <p>Langchain streamlines LLM communication by offering several advantages:</p>
+                <ul>
+                    <li><strong>Unified Interface:</strong> Langchain provides a consistent interface for interacting with various LLMs, reducing the need to learn separate APIs for each provider.</li>
+                    <li><strong>Simplified Code:</strong> The code snippets showcase how Langchain handles the complexities of interacting with different LLM backends, making your code cleaner and more manageable.</li>
+                    <li><strong>Flexibility:</strong> Langchain allows you to switch between LLMs based on your needs or experiment with different models seamlessly.</li>
+                    <li><strong>Open-source Support:</strong> Langchain itself is open-source, fostering community development and potential access to a wider range of LLMs in the future.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

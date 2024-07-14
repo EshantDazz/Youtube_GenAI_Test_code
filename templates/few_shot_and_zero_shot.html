@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero-Shot and Few-Shot Prompting | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .module-content li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--light-text-color);
+        }
+        .module-content li::before {
+            content: '▹';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        .module-content p {
+            color: var(--light-text-color);
+        }
+        .module-content pre {
+            background-color: #1d2d50;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .module-content code {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Zero-Shot and Few-Shot Prompting</h1>
+        <p>Advanced Techniques in LLM Prompting</p>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Zero-Shot Prompting</div>
+            <div class="module-content">
+                <ul>
+                    <li>Concept: Involves prompting a large language model (LLM) to perform a task without providing any specific examples or demonstrations within the prompt itself. The model relies solely on its pre-trained knowledge and the instructions crafted in the prompt.</li>
+                    <li>Example:
+                        <p>Imagine you want to classify the sentiment of a movie review. Here's a zero-shot prompt:</p>
+                        <pre><code>Prompt: Classify the following text into positive, negative, or neutral sentiment:
+
+The movie was a bore. The acting was terrible, and the plot was predictable.</code></pre>
+                        <p>The LLM, understanding the concepts of sentiment and classification based on its training, should classify the review as "negative" without any prior examples of classified reviews.</p>
+                    </li>
+                    <li>Applications: Zero-shot prompting is useful for tasks where labeled data is scarce or creating specific examples might be difficult. It's a good starting point for sentiment analysis, text summarization, or question answering tasks.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">Few-Shot Prompting</div>
+            <div class="module-content">
+                <ul>
+                    <li>Concept: Similar to zero-shot prompting, but the prompt incorporates a few examples to guide the LLM towards the desired outcome. These examples showcase the task being performed correctly.</li>
+                    <li>Example:
+                        <p>Let's revisit the sentiment analysis scenario. Here's a few-shot prompt with examples:</p>
+                        <pre><code>Prompt: Classify the following text into positive, negative, or neutral sentiment:
+
+* Text: I loved this movie! It was hilarious and kept me engaged throughout. (Positive)
+* Text: The acting was decent, but the story felt unoriginal. (Neutral)
+* Text: A complete disappointment. Stay away from this movie! (Negative)
+
+Now, classify this new text: 
+The scenery was beautiful, but the plot was weak.</code></pre>
+                        <p>By providing classified examples, the LLM can grasp the nuances of sentiment analysis better and likely classify the new text as "neutral" based on the provided examples.</p>
+                    </li>
+                    <li>Applications: Few-shot prompting is generally more effective than zero-shot, especially for complex tasks. It offers a balance between ease of use and improved accuracy for tasks like sentiment analysis, text classification, or machine translation.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">In Essence</div>
+            <div class="module-content">
+                <ul>
+                    <li>Zero-shot prompting - Instructing the LLM without specific examples (like giving directions without a map).</li>
+                    <li>Few-shot prompting - Providing a few examples alongside instructions (like giving directions with a basic hand-drawn map).</li>
+                </ul>
+                <p>Remember, the more examples you provide (few-shot becomes many-shot prompting), the better the LLM can understand the task and potentially improve its performance.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

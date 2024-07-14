@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crafting Prompts with Langchain: A Guided Exploration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+            --code-background: #1e1e1e;
+            --code-text-color: #d4d4d4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--light-text-color);
+        }
+        .module-content h2 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .module-content h3 {
+            color: var(--light-text-color);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        pre {
+            background-color: var(--code-background);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--code-text-color);
+            font-size: 0.9rem;
+        }
+        .code-block {
+            position: relative;
+            margin: 2rem 0;
+        }
+        .code-block::before {
+            content: 'Python';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .function { color: #dcdcaa; }
+        .class { color: #4ec9b0; }
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Crafting Prompts with Langchain: A Guided Exploration</h1>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Introduction</div>
+            <div class="module-content">
+                <p>Langchain provides a powerful toolkit for crafting creative prompts for large language models (LLMs). This chapter delves into two key functionalities: PromptTemplate and ChatPromptTemplate.</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">1. PromptTemplate: Shaping Simple Prompts</div>
+            <div class="module-content">
+                <p>Imagine you're writing a joke book. PromptTemplate allows you to define a template for generating jokes. Let's dissect the code line by line:</p>
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_core.prompts <span class="keyword">import</span> <span class="class">PromptTemplate</span>
+
+prompt_template = <span class="class">PromptTemplate</span>.from_template(
+    <span class="string">"Tell me a {adjective} joke about {content}."</span>
+)
+
+prompt_template.<span class="function">format</span>(adjective=<span class="string">"funny"</span>, content=<span class="string">"chickens"</span>)</code></pre>
+                </div>
+                <h3>Import:</h3>
+                <p>We begin by importing PromptTemplate from the langchain_core.prompts module. This class helps us construct basic prompts.</p>
+                <h3>Template Creation:</h3>
+                <p>We call PromptTemplate.from_template and provide a string as an argument. This string acts as the blueprint for our joke prompt. Notice the curly braces {} – these placeholders will be filled with specific values later.</p>
+                <h3>Formatting the Prompt:</h3>
+                <p>Finally, we use the format method on the prompt_template object. We pass a dictionary containing replacements for the placeholders. Here, "funny" becomes the value for {adjective}, and "chickens" fills the {content} placeholder.</p>
+                <p>This code generates the final prompt: "Tell me a funny joke about chickens."</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">2. ChatPromptTemplate: Building Conversational Flows</div>
+            <div class="module-content">
+                <p>Now, let's create a more elaborate scenario – a chat interaction between a user and an AI assistant. ChatPromptTemplate comes to the rescue!</p>
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_core.prompts <span class="keyword">import</span> <span class="class">ChatPromptTemplate</span>
+
+chat_template = <span class="class">ChatPromptTemplate</span>.from_messages(
+    [
+        (<span class="string">"system"</span>, <span class="string">"You are a helpful AI bot. Your name is {name}."</span>),
+        (<span class="string">"human"</span>, <span class="string">"Hello, how are you doing?"</span>),
+        (<span class="string">"ai"</span>, <span class="string">"I'm doing well, thanks!"</span>),
+        (<span class="string">"human"</span>, <span class="string">"{user_input}"</span>),
+    ]
+)
+
+messages = chat_template.<span class="function">format_messages</span>(name=<span class="string">"Bob"</span>, user_input=<span class="string">"What is your name?"</span>)</code></pre>
+                </div>
+                <h3>Import:</h3>
+                <p>Similar to before, we import ChatPromptTemplate from langchain_core.prompts.</p>
+                <h3>Constructing the Conversation:</h3>
+                <p>We use ChatPromptTemplate.from_messages to create a list of tuples. Each tuple represents a message in the conversation, with the first element indicating the speaker ("system" for AI, "human" for the user) and the second element being the message content. Placeholders like {name} and {user_input} allow for customization.</p>
+                <h3>Formatting the Conversation:</h3>
+                <p>We call format_messages on the chat_template object, providing a dictionary containing values for the placeholders. Here, "Bob" replaces {name} and the user's input ("What is your name?") fills {user_input}. The format_messages method returns a list of formatted messages, creating the complete chat flow.</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">F-strings vs. Langchain Prompt Templates: A Key Distinction</div>
+            <div class="module-content">
+                <p>While both f-strings and Langchain's PromptTemplate allow for string formatting, there's a crucial difference:</p>
+                <h3>F-strings:</h3>
+                <p>Primarily designed for basic string manipulation within Python code. They offer limited control over complex prompt structures.</p>
+                <h3>Langchain Prompt Templates:</h3>
+                <p>Specifically built for crafting prompts for LLMs. They provide features like:</p>
+                <ul>
+                    <li>Placeholders: Define specific locations for variable content.</li>
+                    <li>Message Roles: Distinguish between system and human messages in chat prompts.</li>
+                    <li>Conditional Logic: Enable building more intricate prompt structures based on conditions.</li>
+                </ul>
+                <p>In essence, Langchain Prompt Templates provide a more specialized and powerful approach for crafting prompts for large language models.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

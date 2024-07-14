@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain of Thought Prompting | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .module-content li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--light-text-color);
+        }
+        .module-content li::before {
+            content: '▹';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        .module-content p {
+            color: var(--light-text-color);
+        }
+        .module-content pre {
+            background-color: #1d2d50;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .module-content code {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chain of Thought Prompting</h1>
+        <p>Advanced Techniques in LLM Reasoning</p>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Introduction to Chain of Thought Prompting</div>
+            <div class="module-content">
+                <p>Chain of Thoughts Prompting (CoT) is a way to train large language models (LLMs) to reason better, especially for complex tasks. Imagine you're teaching someone math. Instead of just giving the answer, you show them step-by-step how to solve it. CoT does the same for LLMs.</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Comparison with Few-Shot Prompting</div>
+            <div class="module-content">
+                <ul>
+                    <li><strong>Few-shot prompting:</strong> You show the LLM a few examples of the question and answer (like 2 + 2 = 4). This helps the LLM understand the format and answer future problems.</li>
+                    <li><strong>Chain of thought prompting:</strong> You show the LLM not just the answer, but the steps to get there (like "Add 2 to itself to get 4"). This helps the LLM understand the underlying logic and solve similar problems even if they've never seen them before.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Example</div>
+            <div class="module-content">
+                <p><strong>Question:</strong> What is 8 divided by 2?</p>
+                <p><strong>Few-shot prompting:</strong></p>
+                <ul>
+                    <li>5 divided by 1 is 5.</li>
+                    <li>7 divided by 2 is 3.5</li>
+                </ul>
+                <p><strong>CoT prompting:</strong></p>
+                <ul>
+                    <li>5 divided by 1 is 5 (because dividing by 1 gives you the number itself).</li>
+                    <li>We want to divide 8 by 2. Dividing by 2 is the same as splitting something in half.</li>
+                    <li>Splitting 8 in half gives us 4.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Conclusion</div>
+            <div class="module-content">
+                <p>CoT prompting takes more effort to set up, but it can make LLMs much more powerful reasoners!</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

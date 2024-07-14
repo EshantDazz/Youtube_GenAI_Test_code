@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced GenAI Course | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .module-content li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--light-text-color);
+        }
+        .module-content li::before {
+            content: '▹';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        .special-module {
+    background: linear-gradient(135deg, #112240, #1d2d50);
+    border: 1px solid var(--secondary-color);
+}
+
+.special-module .module-header {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.special-module .module-content li::before {
+    content: '★';
+    color: var(--accent-color);
+}
+
+.special-module:hover {
+    box-shadow: 0 15px 40px rgba(247, 108, 108, 0.1);
+    transform: translateY(-5px) scale(1.02);
+}
+.module-content ul ul {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.module-content ul ul li {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.module-content ul ul li::before {
+    content: '•';
+    font-size: 0.8rem;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Advanced GenAI Course</h1>
+        <p>Elevate your AI expertise with HazzX Learning Channel</p>
+    </header>
+    <main>
+˘
+<div class="course-module">
+    <div class="module-header">GenAI Fundamentals</div>
+    <div class="module-content">
+        <ul>
+            <li>Difference between LLMs and Diffusion Models</li>
+            <li>Different LLM models</li>
+            <li>Get access to free API keys for LLM models</li>
+            <ul>
+                <li>GroqAI</li>
+                <li>NVIDIA NIM</li>
+
+
+            </ul>
+            <li>Using Ollama to use open source models</li>
+            <li>Prompt Engineering techniques
+                <ul>
+                    <li>Using Delimiters</li>
+                    <li>Zero Shot</li>
+                    <li>Few Shots</li>
+                    <li>Chain of Thoughts</li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+        <div class="course-module">
+            <div class="module-header">Langchain</div>
+            <div class="module-content">
+                <ul>
+                    <li>ChatTemplates</li>
+                    <li>Initialising LLMs</li>
+                    <li>Output parser</li>
+                    <li>LCEL Chains (invoke, batch, stream)</li>
+                   
+                    <li>GROQAI using Langchain</li>
+                    <li>Memories</li>
+                   
+                    <li>LCEL Exercises (Chains, RunnableLambda, RunnableParallel and many more)</li>
+                    <li>Chains (multiple  chains exercises)</li>
+                    <li>Pydantic Output Parsers (Many examples)</li>
+                    <li>Routing</li>
+                    <li>Tools</li>
+                    <li>Agents</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">RAG (Retrieval-Augmented Generation)</div>
+            <div class="module-content">
+                <ul>
+                    <li>Why RAG?</li>
+                    <li>Different loaders</li>
+                    <li>Chunking</li>
+                    <li>Embedding</li>
+                    <li>Vector databases</li>
+                    <li>Similarity search</li>
+                    <li>BM25 retriever</li>
+                    <li>Hybrid Search</li>
+                    <li>Reranker</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">Projects</div>
+            <div class="module-content">
+                <ul>
+                    <li>Chatbot over Database</li>
+                    <li>TimeTable Scheduler</li>
+                    <li>Transcript Verification</li>
+                    <li>Chatbot over a YouTube video</li>
+                    <li>Text to graph</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module special-module">
+            <div class="module-header">Coming Soon</div>
+            <div class="module-content">
+                <ul>
+                    <li>Different Agentic Frameworks (CrewAI, AutoGen, Langraph)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module special-module">
+            <div class="module-header">Bonus Content: Streamlit</div>
+            <div class="module-content">
+                <ul>
+                    <li>What is Streamlit?</li>
+                    <li>Overview of Streamlit</li>
+                    <li>Use cases and applications</li>
+                    <li>First Streamlit App</li>
+                    <li>Text Elements</li>
+                    <li>Data Display Elements</li>
+                    <li>Media Elements</li>
+                    <li>Input Widgets</li>
+                    <li>Selection Widgets</li>
+                    <li>Buttons</li>
+                    <li>Layout Containers</li>
+                    <li>Display Options</li>
+                    <li>File Handling</li>
+                    <li>Chatbot interface for Streamlit</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

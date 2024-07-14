@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompting using Delimiters | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .module-content li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--light-text-color);
+        }
+        .module-content li::before {
+            content: '▹';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        .module-content p {
+            color: var(--light-text-color);
+        }
+        .module-content pre {
+            background-color: #1d2d50;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .module-content code {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Prompting using Delimiters</h1>
+        <p>Advanced Techniques in LLM Communication</p>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Benefits of Using Delimiters in Prompting</div>
+            <div class="module-content">
+                <p>Delimiters play a crucial role in crafting effective prompts for large language models (LLMs). They act as organizational tools, separating distinct parts of your prompt for improved clarity and allowing the LLM to better understand your instructions and desired output. Here's a breakdown of the key advantages:</p>
+                <ul>
+                    <li><strong>Enhanced Clarity and Structure:</strong> Delimiters visually segment your prompt, making it easier for both you and the LLM to comprehend the various elements involved. This reduces ambiguity and ensures the LLM focuses on the intended information.</li>
+                    <li><strong>Improved Accuracy and Relevance:</strong> Well-structured prompts with clear delimiters guide the LLM towards generating more accurate and relevant responses that align with your expectations.</li>
+                    <li><strong>Efficient Information Processing:</strong> By separating instructions from examples, context, and desired output, delimiters streamline the LLM's processing. The LLM can readily identify the purpose of each section and utilize it effectively.</li>
+                    <li><strong>Greater Control over Output:</strong> Delimiters empower you to exert more control over the LLM's output. You can fine-tune the specific elements you want the LLM to prioritize within the prompt.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Types of Delimiters and Examples</div>
+            <div class="module-content">
+                <ul>
+                    <li><strong>Double Quotes (" "):</strong>
+                        <ul>
+                            <li>Ideal for short, simple prompts where you want the LLM to generate text in that specific style or tone.</li>
+                            <li>Example: "Write a poem in the style of William Blake, using vivid imagery and symbolism." (The quote marks indicate the desired style)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Brackets ( ):</strong>
+                        <ul>
+                            <li>Useful for providing optional or supplementary information in the prompt.</li>
+                            <li>Example: "Write a blog post about the benefits of using solar panels (for homeowners)." (The bracketed phrase is additional context)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Square Brackets [ ]:</strong>
+                        <ul>
+                            <li>Often employed to define placeholders or variables within a prompt. The LLM will fill these placeholders with relevant content based on its understanding.</li>
+                            <li>Example: "Write a news article about a scientific breakthrough in [field of study]. Highlight the potential impact of this discovery on [target audience]." (The bracketed elements are placeholders)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Curly Braces { }:</strong>
+                        <ul>
+                            <li>Occasionally used to denote specialized instructions or formatting requests within the prompt.</li>
+                            <li>Example: "{Write a limerick. Theme: Cats}" (The curly braces specify the desired output format)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Custom Delimiters (e.g., &lt;context&gt;, &lt;/context&gt;):</strong>
+                        <ul>
+                            <li>Can be tailored to your specific needs and the capabilities of the LLM you're using.</li>
+                            <li>Example: "&lt;context&gt;The year is 2042. Humanity has colonized Mars.&lt;/context&gt; Write a short story about the challenges faced by the first Martian colonists." (Custom delimiters define the context)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
