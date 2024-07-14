@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unveiling Langchain Routing: Directing Your LLMs Like a Maestro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+            --code-background: #1e1e1e;
+            --code-text-color: #d4d4d4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--light-text-color);
+        }
+        .module-content h2 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .module-content h3 {
+            color: var(--light-text-color);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            padding-left: 2rem;
+            color: var(--light-text-color);
+        }
+        pre {
+            background-color: var(--code-background);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--code-text-color);
+            font-size: 0.9rem;
+        }
+        .code-block {
+            position: relative;
+            margin: 2rem 0;
+        }
+        .code-block::before {
+            content: 'Python';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .function { color: #dcdcaa; }
+        .class { color: #4ec9b0; }
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Unveiling Langchain Routing: Directing Your LLMs Like a Maestro</h1>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Introduction</div>
+            <div class="module-content">
+                <p>Langchain Routing empowers you to orchestrate communication with diverse large language models (LLMs) based on specific criteria. Imagine a conductor directing an orchestra, ensuring each instrument plays the most suitable part. Similarly, Langchain Routing directs user queries to the most appropriate LLM for optimal results.</p>
+                <p>This section delves into two illustrative examples that showcase the power of Langchain Routing:</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Example 1: Expertise-Based Routing</div>
+            <div class="module-content">
+                <p>Here, we create a system that categorizes user questions and routes them to specialized LLMs based on their domain expertise.</p>
+                <h3>Components:</h3>
+                <ul>
+                    <li><strong>LLMs:</strong>
+                        <ul>
+                            <li><code>llm_nvidea</code> (NVIDIA's LLM) - Specializes in gaming topics.</li>
+                            <li><code>llm_groq</code> (Groq's LLM) - Possesses expertise in world affairs.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Prompt Templates:</strong>
+                        <ul>
+                            <li>These define how questions are presented to each LLM. They include instructions for the LLM to identify itself as an expert and answer the question within a specific format.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_nvidia_ai_endpoints <span class="keyword">import</span> ChatNVIDIA
+<span class="keyword">from</span> langchain_groq <span class="keyword">import</span> ChatGroq
+<span class="keyword">from</span> langchain_core.output_parsers <span class="keyword">import</span> StrOutputParser
+<span class="keyword">from</span> langchain_core.prompts <span class="keyword">import</span> PromptTemplate
+
+llm_nvidea = ChatNVIDIA(model=<span class="string">"mistralai/mixtral-8x22b-instruct-v0.1"</span>)
+llm_groqai = ChatGroq(model=<span class="string">"llama3-70b-8192"</span>)
+
+chain = (
+    PromptTemplate.from_template(
+        <span class="string">"""Given the user question below, classify it as either being about `gaming`, `world affairs`
+
+Do not respond with more than one word.
+
+<question>
+{question}
+</question>
+
+Classification:"""</span>
+    )
+    | llm_groqai
+    | StrOutputParser()
+)
+
+nvide_chain = PromptTemplate.from_template(
+    <span class="string">"""You are an expert in Gaming. \
+Always answer questions starting with "As NVIDEA is known for gaming". \
+Respond to the following question:
+
+Question: {question}
+Answer:"""</span>
+) | llm_nvidea
+
+groqai_chain = PromptTemplate.from_template(
+    <span class="string">"""You are an expert in world affairs. \
+Always answer questions starting with "As Eshant told us". \
+Respond to the following question:
+
+Question: {question}
+Answer:"""</span>
+) | llm_groqai
+
+<span class="keyword">def</span> <span class="function">route</span>(info):
+    <span class="keyword">if</span> <span class="string">"game"</span> <span class="keyword">in</span> info[<span class="string">"topic"</span>].lower() <span class="keyword">or</span> <span class="string">"gaming"</span> <span class="keyword">in</span> info[<span class="string">"topic"</span>].lower():
+        <span class="keyword">return</span> nvide_chain
+    <span class="keyword">elif</span> <span class="string">"world affairs"</span> <span class="keyword">in</span> info[<span class="string">"topic"</span>].lower():
+        <span class="keyword">return</span> groqai_chain
+
+<span class="keyword">from</span> langchain_core.runnables <span class="keyword">import</span> RunnableLambda
+
+full_chain = {<span class="string">"topic"</span>: chain, <span class="string">"question"</span>: <span class="keyword">lambda</span> x: x[<span class="string">"question"</span>]} | RunnableLambda(
+    route
+)
+
+full_chain.invoke({<span class="string">"question"</span>: <span class="string">"Do you know about Russia and Ukraine War??"</span>})</code></pre>
+                </div>
+                <h3>Routing Function (<code>route</code>):</h3>
+                <ul>
+                    <li>This function analyzes the user question's topic (extracted from additional information, not shown here) and determines the most suitable LLM.</li>
+                    <li>If the topic is related to "gaming", the <code>nvide_chain</code> is chosen, leveraging the expertise of <code>llm_nvidea</code>.</li>
+                    <li>For "world affairs" questions, <code>groqai_chain</code> is selected, directing the query to <code>llm_groq</code>.</li>
+                </ul>
+                <h3>Full Chain:</h3>
+                <ul>
+                    <li>This chain combines the routing logic with the individual LLM chains.</li>
+                    <li>The <code>full_chain.invoke</code> method is used to initiate the entire process, providing the user question as input.</li>
+                    <li>Based on the routing decision, the appropriate LLM chain is executed, resulting in a tailored response.</li>
+                </ul>
+                <h3>Key Takeaways:</h3>
+                <ul>
+                    <li>Route user queries to the most relevant LLM based on domain expertise.</li>
+                    <li>Maintain separate LLM chains for different domains.</li>
+                    <li>Leverage routing functions to make dynamic decisions based on input data.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Example 2: Content-Based Routing with Embeddings</div>
+            <div class="module-content">
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_cohere <span class="keyword">import</span> CohereEmbeddings
+<span class="keyword">from</span> langchain.utils.math <span class="keyword">import</span> cosine_similarity
+<span class="keyword">from</span> langchain_core.output_parsers <span class="keyword">import</span> StrOutputParser
+<span class="keyword">from</span> langchain_core.prompts <span class="keyword">import</span> PromptTemplate
+<span class="keyword">from</span> langchain_core.runnables <span class="keyword">import</span> RunnableLambda, RunnablePassthrough
+
+physics_template = <span class="string">"""You are a very smart physics professor. \
+You are great at answering questions about physics in a concise and easy to understand manner. \
+When you don't know the answer to a question you admit that you don't know.
+
+Here is a question:
+{query}"""</span>
+
+math_template = <span class="string">"""You are a very good mathematician. You are great at answering math questions. \
+You are so good because you are able to break down hard problems into their component parts, \
+answer the component parts, and then put them together to answer the broader question.
+
+Here is a question:
+{query}"""</span>
+
+embeddings = CohereEmbeddings(
+    model=<span class="string">"embed-english-light-v3.0"</span>
+) 
+prompt_templates = [physics_template, math_template]
+prompt_embeddings = embeddings.embed_documents(prompt_templates)
+
+
+<span class="keyword">def</span> <span class="function">prompt_router</span>(input):
+    query_embedding = embeddings.embed_query(input[<span class="string">"query"</span>])
+    similarity = cosine_similarity([query_embedding], prompt_embeddings)[0]
+    most_similar = prompt_templates[similarity.argmax()]
+    print(<span class="string">"Using MATH"</span> <span class="keyword">if</span> most_similar == math_template <span class="keyword">else</span> <span class="string">"Using PHYSICS"</span>)
+    <span class="keyword">return</span> PromptTemplate.from_template(most_similar)
+
+
+chain = (
+    {<span class="string">"query"</span>: RunnablePassthrough()}
+    | RunnableLambda(prompt_router)
+    | llm_groq
+    | StrOutputParser()
+)
+print(chain.invoke(<span class="string">"What's a black hole"</span>))
+print(chain.invoke(<span class="string">"What's a path integral"</span>))</code></pre>
+                </div>
+                <h3><code>prompt_router</code> Function:</h3>
+                <ul>
+                    <li>This function calculates the cosine similarity between the user query embedding and the embeddings of the prompt templates.</li>
+                    <li>Cosine similarity measures how similar two vectors (embeddings) are.</li>
+                    <li>The function selects the prompt template with the highest similarity, essentially choosing the domain (physics or math) closest to the user query.</li>
+                </ul>
+                <h3>Full Chain:</h3>
+                <ul>
+                    <li>The user query is passed through the <code>prompt_router</code> to determine the most relevant prompt template.</li>
+                    <li>The chosen template is then used to interact with <code>llm_groq</code>.</li>
+                </ul>
+                <h3>Key Takeaways:</h3>
+                <ul>
+                    <li>Use LLM embeddings to determine content similarity between queries and prompts.</li>
+                    <li>Route queries based on the closest matching domain (physics or math in this case).</li>
+                    <li>This approach allows for more nuanced routing decisions beyond simple keyword matching.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Conclusion</div>
+            <div class="module-content">
+                <p>In essence, Langchain Routing provides a flexible framework for directing user queries to the most appropriate LLM, enhancing the effectiveness and accuracy of your LLM interactions.</p>
+                <p>By leveraging techniques such as expertise-based routing and content-based routing with embeddings, developers can create more sophisticated and contextually aware AI systems. These approaches allow for:</p>
+                <ul>
+                    <li>More accurate responses by matching queries with specialized LLMs</li>
+                    <li>Improved efficiency by directing queries to the most relevant knowledge domains</li>
+                    <li>Enhanced user experience through more tailored and precise interactions</li>
+                    <li>Greater flexibility in handling diverse types of queries within a single system</li>
+                </ul>
+                <p>As you continue to explore Langchain Routing, consider how these techniques can be applied to your specific use cases, potentially combining multiple routing strategies for even more nuanced and powerful AI applications.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 2rem 0; color: var(--light-text-color);">
+        <p>&copy; 2024 Langchain Routing Tutorial. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+        
