@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazzx Gentech Wallpaper</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        .wallpaper {
+            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+        }
+        .content {
+            text-align: right;
+            color: #ffffff;
+            z-index: 1;
+            padding-right: 10vw;
+        }
+        .main-text {
+            font-size: 6vw;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5vw;
+            margin-bottom: 1vw;
+            background: linear-gradient(45deg, #64ffda, #f76c6c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        .tagline {
+            font-size: 2.5vw;
+            opacity: 0.8;
+            letter-spacing: 0.2vw;
+            color: #64ffda;
+        }
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background-color: rgba(100, 255, 218, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #64ffda, 0 0 10px #64ffda, 0 0 15px #64ffda;
+            }
+            to {
+                text-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda, 0 0 30px #64ffda;
+            }
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wallpaper">
+        <div class="particles">
+            <script>
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    particle.style.width = `${Math.random() * 8 + 2}px`;
+                    particle.style.height = particle.style.width;
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                    particle.style.animationDelay = `${Math.random() * 5}s`;
+                    document.querySelector('.particles').appendChild(particle);
+                }
+            </script>
+        </div>
+        <div class="content">
+            <div class="main-text">Hazzx Gentech</div>
+            <div class="tagline">GenAI at its Peak</div>
+        </div>
+    </div>
+</body>
+</html>

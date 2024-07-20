@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langchain Tools and Agents: A Collaborative Powerhouse | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .diagram {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Langchain Tools and Agents: A Collaborative Powerhouse</h1>
+        <p>Explore the synergy between Langchain tools and agents</p>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Langchain Tools: Building Blocks of Functionality</div>
+            <div class="module-content">
+                <ul>
+                    <li>Bridges to the World: Interfaces for LLM to interact with external resources</li>
+                    <li>Defining Capabilities: Tools defined by name, description, and specific action</li>
+                    <li>Ready-made Options: Collection of built-in tools available</li>
+                    <li>Customization Potential: Develop custom tools for specific needs</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">Langchain Agents: Orchestrating the Tools</div>
+            <div class="module-content">
+                <ul>
+                    <li>LLM as the Decision Engine: Agents leverage LLM's reasoning power</li>
+                    <li>Adaptive and Iterative: Employ tools in a loop based on context</li>
+                    <li>Building Intelligent Systems: Create systems that interact with the environment</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">The Intertwined Relationship</div>
+            <div class="module-content">
+                <ul>
+                    <li>Agents as Architects, Tools as Building Blocks: Strategic utilization of tools</li>
+                    <li>Langchain as a Platform: Functionalities for defining and using tools and agents</li>
+                    <li>Empowering Agents: Choosing the most suitable tool for the task</li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">Diagrammatic Representation</div>
+            <div class="module-content">
+                <svg class="diagram" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background -->
+                    <rect width="100%" height="100%" fill="#0a192f"/>
+                    <path d="M0 50 Q 400 0 800 50 T 1600 50" fill="none" stroke="#112240" stroke-width="2"/>
+                    <path d="M0 150 Q 400 100 800 150 T 1600 150" fill="none" stroke="#1d2d50" stroke-width="2"/>
+                    
+                    <!-- Title -->
+                    <text x="400" y="40" text-anchor="middle" fill="#ccd6f6" font-size="24" font-weight="bold">Langchain Agent Tool Selection</text>
+                    
+                    <!-- Agent -->
+                    <circle cx="400" cy="120" r="70" fill="#64ffda"/>
+                    <text x="400" y="125" text-anchor="middle" fill="#0a192f" font-weight="bold" font-size="18">Agent (LLM)</text>
+                    
+                    <!-- Decision Process (Hexagon) -->
+                    <polygon points="400,210 460,240 460,300 400,330 340,300 340,240" fill="#8892b0"/>
+                    <text x="400" y="275" text-anchor="middle" fill="#ccd6f6" font-weight="bold" font-size="16">Decision</text>
+                    <text x="400" y="295" text-anchor="middle" fill="#ccd6f6" font-weight="bold" font-size="16">Process</text>
+                    
+                    <!-- Tools -->
+                    <circle cx="200" cy="450" r="50" fill="#f76c6c"/>
+                    <text x="200" y="455" text-anchor="middle" fill="#0a192f" font-weight="bold" font-size="14">Search</text>
+                    
+                    <circle cx="400" cy="450" r="50" fill="#f76c6c"/>
+                    <text x="400" y="455" text-anchor="middle" fill="#0a192f" font-weight="bold" font-size="14">Calculate</text>
+                    
+                    <circle cx="600" cy="450" r="50" fill="#f76c6c"/>
+                    <text x="600" y="455" text-anchor="middle" fill="#0a192f" font-weight="bold" font-size="14">Analyze</text>
+                    
+                    <!-- Connectors -->
+                    <line x1="400" y1="190" x2="400" y2="210" stroke="#64ffda" stroke-width="3"/>
+                    <line x1="340" y1="300" x2="200" y2="400" stroke="#64ffda" stroke-width="2" stroke-dasharray="5,5"/>
+                    <line x1="400" y1="330" x2="400" y2="400" stroke="#64ffda" stroke-width="4"/>
+                    <line x1="460" y1="300" x2="600" y2="400" stroke="#64ffda" stroke-width="2" stroke-dasharray="5,5"/>
+                    
+                    <!-- Labels -->
+                    <text x="200" y="520" text-anchor="middle" fill="#ccd6f6" font-size="14">External Data</text>
+                    <text x="400" y="520" text-anchor="middle" fill="#ccd6f6" font-size="14">Computations</text>
+                    <text x="600" y="520" text-anchor="middle" fill="#ccd6f6" font-size="14">Data Analysis</text>
+                    
+                    <!-- Legend -->
+                    <rect x="620" y="70" width="20" height="20" fill="#64ffda"/>
+                    <text x="650" y="85" fill="#ccd6f6" font-size="12">Agent</text>
+                    <polygon points="620,105 630,110 630,130 620,135 610,130 610,110" fill="#8892b0"/>
+                    <text x="650" y="125" fill="#ccd6f6" font-size="12">Decision Process</text>
+                    <circle cx="630" cy="150" r="10" fill="#f76c6c"/>
+                    <text x="650" y="155" fill="#ccd6f6" font-size="12">Tools</text>
+                    <line x1="620" y1="180" x2="640" y2="180" stroke="#64ffda" stroke-width="4"/>
+                    <text x="650" y="185" fill="#ccd6f6" font-size="12">Active Selection</text>
+                    <line x1="620" y1="210" x2="640" y2="210" stroke="#64ffda" stroke-width="2" stroke-dasharray="5,5"/>
+                    <text x="650" y="215" fill="#ccd6f6" font-size="12">Available Options</text>
+                </svg>
+                <p>This high-standard diagram illustrates the Langchain Agent's tool selection process. The Agent (LLM) at the top analyzes tasks and employs its decision-making process, represented by a hexagon, to choose the most appropriate tool. In this representation, the Calculate tool is actively selected (indicated by the solid, thicker line), while Search and Analyze tools remain available options (shown by dashed lines). This process ensures efficient utilization of the most suitable tool for each specific task, demonstrating the Agent's intelligent decision-making capabilities.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

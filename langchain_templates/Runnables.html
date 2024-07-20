@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced LangChain Concepts: Runnable Lambdas and Runnable Parallel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+            --code-background: #1e1e1e;
+            --code-text-color: #d4d4d4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--light-text-color);
+        }
+        .module-content h2 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .module-content h3 {
+            color: var(--light-text-color);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            padding-left: 2rem;
+            color: var(--light-text-color);
+        }
+        pre {
+            background-color: var(--code-background);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--code-text-color);
+            font-size: 0.9rem;
+        }
+        .code-block {
+            position: relative;
+            margin: 2rem 0;
+        }
+        .code-block::before {
+            content: 'Python';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .function { color: #dcdcaa; }
+        .class { color: #4ec9b0; }
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Advanced LangChain Concepts: Runnable Lambdas and Runnable Parallel</h1>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Introduction</div>
+            <div class="module-content">
+                <p>This guide explores two powerful concepts in LangChain: Runnable Lambdas and Runnable Parallel. These tools enable developers to create flexible, efficient workflows for processing data and executing tasks within the LangChain ecosystem.</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Runnable Lambdas</div>
+            <div class="module-content">
+                <h2>Concept</h2>
+                <p>Runnable Lambdas allow you to convert Python functions into LangChain's `Runnable` objects. This integration enables seamless incorporation of custom logic within LangChain workflows for data processing and task execution.</p>
+                
+                <h2>Implementation</h2>
+                <ul>
+                    <li>Import `RunnableLambda` from `langchain_core.runnables`.</li>
+                    <li>Define your Python function (e.g., `add_one`, `multiple_two`, `string_conversion`).</li>
+                    <li>Create a `RunnableLambda` instance by wrapping your function.</li>
+                </ul>
+                
+
+
+                <h2>Example</h2>
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_core.runnables <span class="keyword">import</span> RunnableLambda
+
+<span class="keyword">def</span> <span class="function">add_one</span>(x: int) -> int:
+    <span class="keyword">return</span> x + 1
+
+add_one_runnable = RunnableLambda(add_one)
+print(add_one_runnable.invoke(4))  <span class="comment"># Output: 5</span>
+
+<span class="keyword">def</span> <span class="function">multiple_two</span>(x: int) -> int:
+    <span class="keyword">return</span> x * 2
+
+<span class="keyword">def</span> <span class="function">string_conversion</span>(x: int) -> str:
+    <span class="keyword">return</span> str(x) + <span class="string">" Eshant"</span>
+
+multiple_two_runnable = RunnableLambda(multiple_two)
+string_conversion_runnable = RunnableLambda(string_conversion)
+
+chain = add_one_runnable | multiple_two_runnable | string_conversion_runnable
+print(chain.invoke(14))  <span class="comment"># Output: 30 Eshant</span></code></pre>
+                </div>
+
+                <h3>Explanation:</h3>
+                <ol>
+                    <li>We define three functions: <code>add_one</code>, <code>multiple_two</code>, and <code>string_conversion</code>.</li>
+                    <li>We create <code>RunnableLambda</code> instances for each function.</li>
+                    <li>We chain the Runnables together using the pipe operator (<code>|</code>).</li>
+                    <li>We call <code>invoke</code> on the chain, providing the initial input value (14).</li>
+                    <li>The chain executes each Runnable in sequence:
+                        <ul>
+                            <li><code>add_one_runnable</code> adds 1 to 14, resulting in 15.</li>
+                            <li><code>multiple_two_runnable</code> multiplies 15 by 2, resulting in 30.</li>
+                            <li><code>string_conversion_runnable</code> converts 30 to a string, appends " Eshant", and returns the final output: "30 Eshant".</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Runnable Parallel</div>
+            <div class="module-content">
+                <h2>Concept</h2>
+                <p><code>RunnableParallel</code> enables the concurrent execution of multiple Runnables on the same input data, facilitating parallel task processing. The results are returned as a dictionary with keys matching the Runnable names.</p>
+                
+                <h2>Implementation</h2>
+                <ul>
+                    <li>Import <code>RunnableParallel</code> from <code>langchain_core.runnables</code>.</li>
+                    <li>Create a dictionary where keys are Runnable names and values are the corresponding Runnable objects.</li>
+                    <li>Construct a <code>RunnableParallel</code> instance using this dictionary.</li>
+                </ul>
+                
+                <h2>Key Method</h2>
+                <ul>
+                    <li><code>invoke(input)</code>: Executes all Runnables in parallel on the provided input and returns a dictionary containing the outputs for each Runnable.</li>
+                </ul>
+
+                <h2>Example</h2>
+                <div class="code-block">
+                    <pre><code><span class="keyword">from</span> langchain_core.prompts <span class="keyword">import</span> ChatPromptTemplate
+<span class="keyword">from</span> langchain_core.runnables <span class="keyword">import</span> RunnableParallel
+<span class="keyword">from</span> langchain_core.output_parsers <span class="keyword">import</span> StrOutputParser
+
+joke_chain = ChatPromptTemplate.from_template(<span class="string">"tell me a joke about {topic}"</span>) | model  | StrOutputParser()
+poem_chain = (
+    ChatPromptTemplate.from_template(<span class="string">"write a 2-line poem about {topic}"</span>) | model | StrOutputParser()
+)
+
+map_chain = RunnableParallel(joke=joke_chain, poem=poem_chain)
+
+print(map_chain.invoke({<span class="string">"topic"</span>: <span class="string">"bear"</span>}))</code></pre>
+                </div>
+
+                <h3>Explanation:</h3>
+                <ol>
+                    <li>We import necessary classes: <code>ChatPromptTemplate</code>, <code>RunnableParallel</code>, and <code>StrOutputParser</code>.</li>
+                    <li>We define two Runnable chains:
+                        <ul>
+                            <li><code>joke_chain</code>: Creates a prompt for a joke, generates it using a model, and parses the output.</li>
+                            <li><code>poem_chain</code>: Similar to <code>joke_chain</code>, but for a 2-line poem.</li>
+                        </ul>
+                    </li>
+                    <li>We create a <code>RunnableParallel</code> instance named <code>map_chain</code>, associating each key with a specific processing chain.</li>
+                    <li>We call <code>invoke</code> on <code>map_chain</code>, passing a dictionary with the topic "bear".</li>
+                    <li>This triggers parallel execution of both <code>joke_chain</code> and <code>poem_chain</code>.</li>
+                    <li>The results are returned as a dictionary containing both the generated joke and poem about a bear.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Conclusion</div>
+            <div class="module-content">
+                <p>Runnable Lambdas and Runnable Parallel are powerful tools in the LangChain ecosystem that enable developers to create flexible, efficient workflows for processing data and executing tasks. By leveraging these concepts, you can build more sophisticated and performant AI applications.</p>
+                <ul>
+                    <li>Runnable Lambdas allow for seamless integration of custom Python functions into LangChain workflows.</li>
+                    <li>Runnable Parallel facilitates concurrent execution of multiple tasks, improving efficiency in complex processing pipelines.</li>
+                </ul>
+                <p>As you continue to explore LangChain, consider how these advanced concepts can be applied to optimize your specific use cases and create more robust AI-powered solutions.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 2rem 0; color: var(--light-text-color);">
+        <p>&copy; 2024 Advanced LangChain Concepts Tutorial. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
