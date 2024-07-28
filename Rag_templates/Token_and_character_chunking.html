@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Splitting Techniques in Langchain | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid var(--text-color);
+            padding: 0.5rem;
+            text-align: left;
+        }
+        th {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Text Splitting Techniques in Langchain</h1>
+        <p>Explore efficient methods for chunking text data</p>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Introduction</div>
+            <div class="module-content">
+                <p>When working with large text documents, it's often necessary to break them down into smaller, manageable units called chunks. These chunks can then be processed, analyzed, or indexed more efficiently. Langchain, a powerful Python library for building applications powered by language models, offers several text splitting techniques. This chapter will delve into two primary methods: RecursiveCharacterTextSplitter and TokenTextSplitter.</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">RecursiveCharacterTextSplitter</div>
+            <div class="module-content">
+                <h3>How it works:</h3>
+                <ul>
+                    <li>Employs a hierarchical approach to splitting text.</li>
+                    <li>Prioritizes splitting at larger separators (e.g., double newlines) before proceeding to smaller ones (e.g., single newlines, spaces).</li>
+                    <li>Aims to preserve semantic coherence by keeping related text together within chunks.</li>
+                    <li>Uses a `chunk_size` parameter to control the maximum length of each chunk.</li>
+                </ul>
+                <h3>Key parameters:</h3>
+                <ul>
+                    <li>`chunk_size`: The maximum number of characters in a chunk.</li>
+                    <li>`overlap`: The number of characters to overlap between consecutive chunks.</li>
+                    <li>`length_function`: A custom function to determine chunk length (e.g., based on token count).</li>
+                </ul>
+                <h3>When to use:</h3>
+                <ul>
+                    <li>When preserving paragraph and sentence structure is important.</li>
+                    <li>When dealing with text that has natural divisions (e.g., articles, chapters).</li>
+                    <li>When the desired chunk size is primarily based on character count.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">TokenTextSplitter</div>
+            <div class="module-content">
+                <h3>How it works:</h3>
+                <ul>
+                    <li>Directly splits text based on tokenization, ensuring chunks contain a specific number of tokens.</li>
+                    <li>Ideal for language models that have token-based input requirements.</li>
+                    <li>Provides more precise control over chunk length in terms of tokens.</li>
+                </ul>
+                <h3>Key parameters:</h3>
+                <ul>
+                    <li>`chunk_size`: The desired number of tokens per chunk.</li>
+                    <li>`overlap`: The number of tokens to overlap between consecutive chunks.</li>
+                </ul>
+                <h3>When to use:</h3>
+                <ul>
+                    <li>When working with language models that have strict token limits.</li>
+                    <li>When precise control over chunk length in terms of tokens is required.</li>
+                    <li>When semantic boundaries are less critical than token count.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Comparison</div>
+            <div class="module-content">
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>RecursiveCharacterTextSplitter</th>
+                        <th>TokenTextSplitter</th>
+                    </tr>
+                    <tr>
+                        <td>Splitting criterion</td>
+                        <td>Characters</td>
+                        <td>Tokens</td>
+                    </tr>
+                    <tr>
+                        <td>Semantic preservation</td>
+                        <td>Prioritized</td>
+                        <td>Less emphasized</td>
+                    </tr>
+                    <tr>
+                        <td>Chunk size control</td>
+                        <td>Based on character count</td>
+                        <td>Based on token count</td>
+                    </tr>
+                    <tr>
+                        <td>Ideal for</td>
+                        <td>Text with natural divisions, preserving structure</td>
+                        <td>Language models with token limits, precise control</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Choosing the Right Splitter</div>
+            <div class="module-content">
+                <p>The optimal text splitter depends on the specific use case and the characteristics of the text data. Consider the following factors:</p>
+                <ul>
+                    <li><strong>Semantic importance:</strong> If preserving paragraph and sentence structure is crucial, RecursiveCharacterTextSplitter is preferable.</li>
+                    <li><strong>Token-based models:</strong> For language models with token-based input, TokenTextSplitter is essential.</li>
+                    <li><strong>Chunk size requirements:</strong> If precise control over token count is needed, TokenTextSplitter is the better choice.</li>
+                </ul>
+                <p><strong>Experimentation is key.</strong> Try different splitters and parameters to find the best approach for your application.</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Additional Considerations</div>
+            <div class="module-content">
+                <ul>
+                    <li><strong>Overlap:</strong> Overlapping chunks can help maintain context between chunks, but excessive overlap can increase processing time.</li>
+                    <li><strong>Custom length functions:</strong> For complex scenarios, define custom length functions to tailor chunk creation to specific needs.</li>
+                    <li><strong>Performance:</strong> Consider the efficiency of different splitters when dealing with large datasets.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
