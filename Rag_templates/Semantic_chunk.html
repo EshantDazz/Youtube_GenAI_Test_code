@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Preprocessing: Semantic Chunking | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Text Preprocessing: Semantic Chunking</h1>
+        <p>Explore advanced techniques for meaningful text segmentation</p>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">Introduction</div>
+            <div class="module-content">
+                <p>While traditional text splitting methods like RecursiveCharacterTextSplitter and TokenTextSplitter divide text based on character count or tokenization, respectively, they often disregard the semantic coherence of the content. Semantic chunking aims to address this limitation by grouping text segments based on their semantic similarity. Langchain's `SemanticChunker` provides a powerful tool for achieving this.</p>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Semantic Chunking</div>
+            <div class="module-content">
+                <h3>How it works:</h3>
+                <ul>
+                    <li><strong>Sentence Segmentation:</strong> Initially, the text is split into individual sentences.</li>
+                    <li><strong>Embedding Generation:</strong> Each sentence is converted into a numerical representation (embedding) using a pre-trained language model.</li>
+                    <li><strong>Similarity Calculation:</strong> The similarity between the embeddings of different sentences is computed.</li>
+                    <li><strong>Chunk Formation:</strong> Sentences with high semantic similarity are grouped together to form chunks.</li>
+                    <li><strong>Threshold Determination:</strong> The `SemanticChunker` offers multiple methods to determine the threshold for grouping sentences:
+                        <ul>
+                            <li><strong>Percentile:</strong> Sentences with a similarity difference greater than a specified percentile are separated.</li>
+                            <li><strong>Standard Deviation:</strong> Sentences with a similarity difference exceeding a certain number of standard deviations are split.</li>
+                            <li><strong>Interquartile:</strong> Sentences falling outside the interquartile range of similarity are separated.</li>
+                            <li><strong>Gradient:</strong> The gradient of the similarity distribution is used in conjunction with the percentile method for more nuanced splitting.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h3>When to use:</h3>
+                <ul>
+                    <li>When preserving semantic coherence within chunks is crucial.</li>
+                    <li>When dealing with text that lacks clear structural divisions.</li>
+                    <li>When the goal is to create chunks suitable for question-answering or summarization tasks.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Advantages of Semantic Chunking</div>
+            <div class="module-content">
+                <ul>
+                    <li><strong>Improved Contextual Understanding:</strong> Semantic chunks are more likely to contain contextually related information.</li>
+                    <li><strong>Enhanced Retrieval:</strong> Search and retrieval systems can benefit from semantically coherent chunks.</li>
+                    <li><strong>Better Summarization:</strong> Summaries generated from semantically related sentences are often more coherent.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Considerations</div>
+            <div class="module-content">
+                <ul>
+                    <li><strong>Computational Cost:</strong> Semantic chunking can be computationally expensive due to the embedding process and similarity calculations.</li>
+                    <li><strong>Embedding Quality:</strong> The quality of the embeddings significantly impacts the chunking results.</li>
+                    <li><strong>Threshold Selection:</strong> Choosing the appropriate threshold is crucial for effective chunking. Experimentation may be required to find the optimal value.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="course-module">
+            <div class="module-header">Conclusion</div>
+            <div class="module-content">
+                <p>Semantic chunking offers a valuable approach to text preprocessing by prioritizing semantic coherence. By carefully considering the parameters and trade-offs, you can effectively leverage the `SemanticChunker` to create high-quality chunks for various NLP applications.</p>
+                <p><strong>[Include code examples demonstrating different threshold types and their impact on chunk creation]</strong></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
