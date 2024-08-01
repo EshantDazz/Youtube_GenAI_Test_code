@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Decorators | TechVantage Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --accent-color: #f76c6c;
+            --background-color: #0a192f;
+            --text-color: #8892b0;
+            --light-text-color: #ccd6f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #0a192f, #112240);
+            opacity: 0.8;
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .course-module {
+            background-color: #112240;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .course-module:hover {
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+        }
+        .module-header {
+            background-color: #1d2d50;
+            color: var(--secondary-color);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .module-content {
+            padding: 2rem;
+        }
+        .module-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .module-content li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--light-text-color);
+        }
+        .module-content li::before {
+            content: '▹';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        .module-content p {
+            color: var(--light-text-color);
+        }
+        .module-content pre {
+            background-color: #1d2d50;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .module-content code {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Python Decorators</h1>
+        <p>Advanced Function Modification Techniques</p>
+    </header>
+    <main>
+        <div class="course-module">
+            <div class="module-header">What are Decorators?</div>
+            <div class="module-content">
+                <p>A decorator is a callable Python object (usually a function) that takes another function as its argument and returns a new function. It allows you to modify the behavior of a function without changing its source code. Think of it as wrapping a function with another function to add extra functionality.</p>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">Why Use Decorators?</div>
+            <div class="module-content">
+                <p>Decorators offer several advantages:</p>
+                <ul>
+                    <li>Reusability: You can create a decorator once and apply it to multiple functions.</li>
+                    <li>Separation of concerns: Decorators help keep your code clean by separating core functionality from additional features.</li>
+                    <li>Readability: The @ syntax makes code more concise and easier to understand.</li>
+                    <li>Common use cases:
+                        <ul>
+                            <li>Logging</li>
+                            <li>Caching</li>
+                            <li>Timing function execution</li>
+                            <li>Authentication</li>
+                            <li>Error handling</li>
+                            <li>Profiling</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">Example Breakdown</div>
+            <div class="module-content">
+                <pre><code>def say_hello(func):
+    def wrapper():
+        print("Hello!")
+        func()
+        print("Goodbye!")
+    return wrapper
+
+@say_hello
+def greet():
+    print("How are you?")
+
+# Using the decorator
+greet()</code></pre>
+                <ol>
+                    <li>Defining the decorator:
+                        <ul>
+                            <li><code>say_hello</code> is the decorator function. It takes another function (<code>func</code>) as an argument.</li>
+                            <li><code>wrapper</code> is the inner function that will be returned. It prints "Hello!", calls the original function (<code>func</code>), and then prints "Goodbye!".</li>
+                        </ul>
+                    </li>
+                    <li>Applying the decorator:
+                        <ul>
+                            <li><code>@say_hello</code> before <code>greet</code> means that <code>greet</code> is passed as an argument to <code>say_hello</code>.</li>
+                            <li>The return value of <code>say_hello</code> (which is <code>wrapper</code>) is assigned to <code>greet</code>.</li>
+                        </ul>
+                    </li>
+                    <li>Using the decorated function:
+                        <ul>
+                            <li>Calling <code>greet()</code> actually calls the <code>wrapper</code> function, which prints "Hello!", calls the original <code>greet</code> (printing "How are you?"), and then prints "Goodbye!".</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">Equivalent Without Using the Decorator Syntax</div>
+            <div class="module-content">
+                <pre><code>def greet():
+    print("How are you?")
+
+def say_hello(func):
+    def wrapper():
+        print("Hello!")
+        func()
+        print("Goodbye!")
+    return wrapper
+
+decorated_greet = say_hello(greet)
+decorated_greet()</code></pre>
+                <p>This code achieves the same result as the previous example, but it's less concise and readable. The decorator syntax provides a cleaner way to apply the decorator.</p>
+            </div>
+        </div>
+        <div class="course-module">
+            <div class="module-header">Key Points</div>
+            <div class="module-content">
+                <ul>
+                    <li>Decorators are functions that take functions as arguments and return functions.</li>
+                    <li>They are used to add functionality to existing functions without modifying their code.</li>
+                    <li>The <code>@</code> syntax is a convenient way to apply decorators.</li>
+                    <li>Common use cases include logging, caching, timing, authentication, error handling, and profiling.</li>
+                </ul>
+                <p>By understanding decorators, you can write more efficient, reusable, and maintainable Python code.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
