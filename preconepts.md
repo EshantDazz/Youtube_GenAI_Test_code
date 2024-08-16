@@ -36,6 +36,7 @@ Familiarity with Libraries: Understanding how to use Scikit-learn for simple mod
 Git: Basic commands like clone, commit, push, pull, and branching.
 12. Environment Management
 Virtual Environments: Using venv or conda to manage dependencies.
+
 Optional but Helpful:
 Mathematics and Statistics: Basic understanding of linear algebra, calculus, and statistics.
 Jupyter Notebooks: Familiarity with creating and running notebooks.
